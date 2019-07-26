@@ -17,7 +17,9 @@ func (c *Config) Configure() {
 	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
 }
 
+type Log struct {}
+
 // Printf is a mirror of zerolog's log.Printf.
-func (c *Config) Printf(format string, v ...interface{}) {
+func (c *Log) Printf(format string, v ...interface{}) {
 	log.Printf(format, v)
 }
