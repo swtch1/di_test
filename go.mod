@@ -1,4 +1,4 @@
-module github.homedepot.com/jxt19as/di_test
+module github.com/swtch1/di_test
 
 go 1.12
 
