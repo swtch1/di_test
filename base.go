@@ -1,21 +1,20 @@
 package di_test
 
 import (
-	"fmt"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 )
-
-func init() {
-	fmt.Println("initializing")
-	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
-}
 
 type Zerolog struct {
 }
 
 type Config struct {
 	Zerolog Zerolog
+}
+
+// Configure sets up objects with configuration given in Config.
+func (c *Config) Configure() {
+	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
 }
 
 // Printf is a mirror of zerolog's log.Printf.
