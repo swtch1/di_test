@@ -9,8 +9,14 @@ func init() {
 	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
 }
 
-type Log struct {}
+type Zerolog struct {
+}
 
-func (l *Log) Printf(format string, v ...interface{}) {
+type Config struct {
+	Zerolog Zerolog
+}
+
+// Printf is a mirror of zerolog's log.Printf.
+func (c *Config) Printf(format string, v ...interface{}) {
 	log.Printf(format, v)
 }
