@@ -1,11 +1,13 @@
 package di_test
 
 import (
+	"fmt"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 )
 
 func init() {
+	fmt.Println("initializing")
 	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
 }
 
