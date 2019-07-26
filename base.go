@@ -8,8 +8,10 @@ import (
 type Zerolog struct {
 }
 
+
 type Config struct {
 	Zerolog Zerolog
+	Log Log
 }
 
 // Configure sets up objects with configuration given in Config.
