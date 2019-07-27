@@ -10,7 +10,7 @@ type Zerolog struct {
 	// TimeFieldFormat sets the zerolog.TimeFieldFormat
 	TimeFieldFormat string
 	// GlobalLevel is passed to zerolog.SetGlobalLevel
-	GlobalLevel int
+	GlobalLevel zerolog.Level
 }
 
 type Config struct {
