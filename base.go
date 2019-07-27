@@ -1,11 +1,13 @@
 package di_test
 
 import (
+	"fmt"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 )
 
 type Zerolog struct {
+	TimeFieldFormat string
 }
 
 
@@ -16,7 +18,10 @@ type Config struct {
 
 // Configure sets up objects with configuration given in Config.
 func (c *Config) Configure() {
-	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
+	if c.Zerolog.TimeFieldFormat == "" {
+		fmt.Println("setting time field format default")
+		zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
+	}
 }
 
 type Log struct {}
