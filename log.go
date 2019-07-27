@@ -7,6 +7,11 @@ import (
 
 type Log struct{}
 
+// Print is a mirror of zerolog's log.Print().
+func (_ *Log) Print(v ...interface{}) {
+	log.Print(v)
+}
+
 // Printf is a mirror of zerolog's log.Printf().
 func (_ *Log) Printf(format string, v ...interface{}) {
 	log.Printf(format, v)
