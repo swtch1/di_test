@@ -15,13 +15,23 @@ type Zerolog struct {
 	OutputWriter io.Writer
 }
 
+type Prometheus struct {
+	// Disable will disable the Prometheus endpoint.  Default is false.
+	Enable bool
+}
+
 type Config struct {
 	Zerolog Zerolog
+	Prometheus Prometheus
+}
+
+type Dependency struct {
 	Log     zerolog.Logger
 }
 
 // Run sets up objects with configuration given in Config and run necessary background processes.
-func (c Config) Run() Config {
+func (c Config) Run() *Dependency {
+	d := &Dependency{}
 	// configure zerolog and set defaults
 	{
 		// set time format
@@ -35,7 +45,14 @@ func (c Config) Run() Config {
 			c.Zerolog.OutputWriter = os.Stderr
 		}
 		// create logger with timestamp and caller (line numbers) by default
-		c.Log = zerolog.New(c.Zerolog.OutputWriter).With().Timestamp().Logger().With().Caller().Logger()
+		d.Log = zerolog.New(c.Zerolog.OutputWriter).With().Timestamp().Logger().With().Caller().Logger()
 	}
-	return c
+
+	// configure Prometheus and set defaults, launch endpoint in a goroutine
+	{
+		if c.Prometheus.Enable {
+
+		}
+	}
+	return d
 }
