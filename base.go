@@ -15,7 +15,7 @@ type Zerolog struct {
 
 type Config struct {
 	Zerolog Zerolog
-	Log     Log
+	Log     zerolog.Event
 }
 
 // Configure sets up objects with configuration given in Config.
@@ -35,11 +35,11 @@ func (c *Config) Configure() *Config {
 
 type Log struct{}
 
-// Printf is a mirror of zerolog's log.Printf.
-func (_ *Log) Printf(format string, v ...interface{}) {
-	log.Printf(format, v)
-}
-
-func (_ *Log) Warn(s string) {
-	log.Warn().Msg(s)
-}
+//// Printf is a mirror of zerolog's log.Printf.
+//func (_ *Log) Printf(format string, v ...interface{}) {
+//	log.Printf(format, v)
+//}
+//
+//func (_ *Log) Warn() *zerolog.Event {
+//	return log.Warn()
+//}
