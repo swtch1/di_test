@@ -21,7 +21,7 @@ type Config struct {
 }
 
 // Configure sets up objects with configuration given in Config.
-func (c *Config) Configure() *Config {
+func (c Config) Configure() Config {
 	// configure zerolog and set defaults
 	{
 		// set time format
@@ -34,6 +34,7 @@ func (c *Config) Configure() *Config {
 		if c.Zerolog.OutputWriter == nil {
 			c.Zerolog.OutputWriter = os.Stderr
 		}
+		// create logger with timestamp and caller (line numbers) by default
 		c.Log = zerolog.New(c.Zerolog.OutputWriter).With().Timestamp().Logger().With().Caller().Logger()
 	}
 	return c
