@@ -40,7 +40,6 @@ func (_ *Log) Printf(format string, v ...interface{}) {
 	log.Printf(format, v)
 }
 
-//func (_ *Log) Warn() {
-//	log.Debug().Str()
-//}
-//
+func (_ *Log) Warn(s string) {
+	log.Warn().Msg(s)
+}
