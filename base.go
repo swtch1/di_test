@@ -36,6 +36,11 @@ func (c *Config) Configure() *Config {
 type Log struct{}
 
 // Printf is a mirror of zerolog's log.Printf.
-func (c *Log) Printf(format string, v ...interface{}) {
+func (_ *Log) Printf(format string, v ...interface{}) {
 	log.Printf(format, v)
 }
+
+//func (_ *Log) Warn() {
+//	log.Debug().Str()
+//}
+//
