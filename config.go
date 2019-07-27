@@ -2,6 +2,7 @@ package di_test
 
 import (
 	"github.com/rs/zerolog"
+	"os"
 )
 
 type Zerolog struct {
@@ -13,7 +14,7 @@ type Zerolog struct {
 
 type Config struct {
 	Zerolog Zerolog
-	Log     Log
+	Log     zerolog.Logger
 }
 
 // Configure sets up objects with configuration given in Config.
@@ -27,3 +28,6 @@ func (c *Config) Configure() *Config {
 	}
 	return c
 }
+
+// Logger is the global logger.
+var Logger = zerolog.New(os.Stderr).With().Timestamp().Logger()
