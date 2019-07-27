@@ -20,8 +20,8 @@ type Config struct {
 	Log     zerolog.Logger
 }
 
-// Configure sets up objects with configuration given in Config.
-func (c Config) Configure() Config {
+// Run sets up objects with configuration given in Config and run necessary background processes.
+func (c Config) Run() Config {
 	// configure zerolog and set defaults
 	{
 		// set time format
