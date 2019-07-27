@@ -1,8 +1,10 @@
 package di_test
 
 import (
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/rs/zerolog"
 	"io"
+	"net/http"
 	"os"
 )
 
@@ -21,12 +23,12 @@ type Prometheus struct {
 }
 
 type Config struct {
-	Zerolog Zerolog
+	Zerolog    Zerolog
 	Prometheus Prometheus
 }
 
 type Dependency struct {
-	Log     zerolog.Logger
+	Log zerolog.Logger
 }
 
 // Run sets up objects with configuration given in Config and run necessary background processes.
@@ -51,7 +53,8 @@ func (c Config) Run() *Dependency {
 	// configure Prometheus and set defaults, launch endpoint in a goroutine
 	{
 		if c.Prometheus.Enable {
-
+			http.Handle("/metrics", promhttp.Handler())
+			go http.ListenAndServe(":2112", nil)
 		}
 	}
 	return d
