@@ -1,6 +1,7 @@
 package di_test
 
 import (
+	"fmt"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 )
@@ -25,6 +26,7 @@ func (c *Config) Configure() {
 			zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
 		}
 		if c.Zerolog.GlobalLevel == 0 {
+			fmt.Println("setting global log level")  // FIXME: testing
 			zerolog.SetGlobalLevel(zerolog.WarnLevel)
 		}
 	}
