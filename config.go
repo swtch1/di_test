@@ -13,7 +13,6 @@ type Zerolog struct {
 	GlobalLevel zerolog.Level
 	// OutputWriter determines where logs will be written.  Default is os.Stderr.
 	OutputWriter io.Writer
-	// OutputFile, if given, will
 }
 
 type Config struct {
@@ -35,7 +34,7 @@ func (c *Config) Configure() *Config {
 		if c.Zerolog.OutputWriter == nil {
 			c.Zerolog.OutputWriter = os.Stderr
 		}
-		c.Log = zerolog.New(c.Zerolog.OutputWriter).With().Timestamp().Logger()
+		c.Log = zerolog.New(c.Zerolog.OutputWriter).With().Timestamp().Logger().With().Caller().Logger()
 	}
 	return c
 }
