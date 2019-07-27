@@ -19,7 +19,7 @@ type Config struct {
 }
 
 // Configure sets up objects with configuration given in Config.
-func (c *Config) Configure() Config {
+func (c *Config) Configure() *Config {
 	// set zerolog defaults
 	{
 		if c.Zerolog.TimeFieldFormat == "" {
@@ -30,7 +30,7 @@ func (c *Config) Configure() Config {
 			zerolog.SetGlobalLevel(zerolog.WarnLevel)
 		}
 	}
-	return *c
+	return c
 }
 
 type Log struct{}
