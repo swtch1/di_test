@@ -23,6 +23,7 @@ func (c *Config) Configure() *Config {
 		if c.Zerolog.TimeFieldFormat == "" {
 			zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
 		}
+		zerolog.SetGlobalLevel(c.Zerolog.GlobalLevel)
 	}
 	return c
 }
