@@ -25,9 +25,7 @@ func (c *Config) Configure() *Config {
 			zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
 		}
 		zerolog.SetGlobalLevel(c.Zerolog.GlobalLevel)
+		c.Log = zerolog.New(os.Stderr).With().Timestamp().Logger()
 	}
 	return c
 }
-
-// Logger is the global logger.
-var Logger = zerolog.New(os.Stderr).With().Timestamp().Logger()
